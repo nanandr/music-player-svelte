@@ -1,0 +1,102 @@
+.player{
+    display: flex;
+    flex-direction: column;
+}
+.container{
+    margin: auto;
+    /* display: flex; */
+    min-width: none;
+    max-width: 1080px;
+    /* justify-content: center; */
+    padding: 15px;
+}
+.current-song{
+    background-color: #333;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0px;
+}
+.head{
+    display: flex;
+    flex-direction: row;
+}
+.info{
+    padding: 16px;
+}
+.control{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+}
+.icon{
+    font-size: 24px;
+    margin: 0px 16px;
+    padding: 16px;
+    border-radius: 32px;
+    border: 1px white solid;
+    cursor: pointer;
+}
+.pause{
+    padding: 16px 20px !important;
+}
+.play{
+    padding: 16px 18.5px !important;
+}
+.icon:active{
+    transform: scale(0.9);
+}
+.card{
+    display: flex;
+    flex-direction: row;
+    border: #666 1px;
+    border-style: solid none;
+    padding: 16px 0px 16px 16px;
+}
+.card:hover{
+    cursor: pointer;
+    background-color: #666;
+}
+.active{
+    background-color: #666;
+}
+.nav{
+    margin-top: 16px;
+}
+.nav:hover{
+    color: orange;
+}
+.card-img, .cover img{
+    object-fit: cover;
+}
+.cover img{
+    width: 144px;
+    height: 144px;
+}
+.card-img img{
+    width: 64px;
+    height: 64px;
+}
+.card-img{
+    margin: 0px 16px 0px 0px;
+}
+.card-content h3{
+    margin: 0px;
+}
+.card-content p{
+    margin: 0px;
+}
+.audio{
+    width: 100%;
+    margin-top: 16px;
+}
+.lyrics{
+    font-size: 32px;
+    font-weight: bold;
+    width: 70%;
+}
+.genius{
+    text-align: center;
+}
