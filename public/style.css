@@ -20,7 +20,6 @@
 }
 .head{
     display: flex;
-    flex-direction: row;
 }
 .info{
     padding: 16px;
@@ -28,11 +27,22 @@
     flex-direction: column;
     align-self: flex-end;
 }
+.info h2{
+    text-overflow: ellipsis;
+    overflow: hidden;
+	white-space: nowrap;
+}
+.info p{
+    margin: 0px;
+    max-width: 280px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+	white-space: nowrap;
+}
 .control{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
 }
 .icon{
     font-size: 24px;
@@ -82,9 +92,45 @@
 .card-img, .cover img{
     object-fit: cover;
 }
-.cover img{
-    width: 144px;
-    height: 144px;
+.cover{
+    display: flex;
+    align-items: center;
+}
+@media only screen and (min-width: 800px){
+    .cover img{
+        width: 144px;
+        height: 144px;
+    }
+    .head{
+        flex-direction: row;
+    }
+    .audio-control{
+        width: 90%;
+    }
+    .control{
+        margin-left: auto;
+    }
+    .info h2{
+        max-width: 600px;
+    }
+}
+@media only screen and (max-width: 800px){
+    .cover img{
+        width: 64px;
+        height: 64px;
+    }
+    .head{
+        flex-direction: column;
+    }
+    .audio-control{
+        width: 70%;
+    }
+    .control{
+        margin: auto;
+    }
+    .info h2{
+        max-width: 280px;
+    }
 }
 .card-img img{
     width: 64px;
@@ -114,7 +160,6 @@
     text-align: center;
 }
 .audio-control{
-    width: 90%;
     margin: 0px;
     padding: 0px;
     accent-color: orange;

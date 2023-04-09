@@ -4,7 +4,7 @@
 	import Range from "Range.svelte";
 
 	let currentSong = 0;
-	let playerState = false;
+	let paused = false;
 	let timestamp = "duration";
 	let menu = "queue";
 	let audioElement;
@@ -15,32 +15,32 @@
 	function prev(){
 		if(currentSong > 0){
 			currentSong--;
-			playerState = false
+			paused = false
 		}
 	}
 	function playpause(){
-		if(playerState == false){
-			playerState = false;
+		if(paused == false){
+			paused = true;
 			audioElement.pause();
 		}
 		else{
-			playerState = false
+			paused = false
 			audioElement.play();
 		}
 	}
 	function play(){
-		playerState = false;
+		paused = false;
 		audioElement.play();
 	}
 	function next(){
 		if(currentSong < $musicList.length-1){
 			currentSong++;
-			playerState = false
+			paused = false
 		}
 	}
 	function setPlay(i){
 		currentSong = i;
-		playerState = false;
+		paused = false;
 	}
 	function showLyrics(){
 		menu = "lyrics";
@@ -74,21 +74,23 @@
 		<div class="player">
 			<div class="current-song">
 				<div class="head">
-					<div class="cover">
-						<img src={"./uploads/img/" + $musicList[currentSong].image} alt={$musicList[currentSong].title}>
-					</div>
-					<div class="info">
-						<h2>{$musicList[currentSong].title}</h2>
-						{$musicList[currentSong].artist}
+					<div style="display: flex;">
+						<div class="cover">
+							<img src={"./uploads/img/" + $musicList[currentSong].image} alt={$musicList[currentSong].title}>
+						</div>
+						<div class="info">
+							<h2>{$musicList[currentSong].title}</h2>
+							<p>{$musicList[currentSong].artist}</p>
+						</div>						
 					</div>
 					<div class="control">
 						<button on:click={prev}>
 							<i class="fa-backward-step fa-solid icon"></i>
 						</button>
 						<button on:click={playpause}>
-							{#if playerState == false}
+							{#if paused == false}
 								<i class="fa-pause fa-solid pause icon"></i>
-							{:else if playerState == true && currentTime == duration}
+							{:else if paused == true && currentTime == duration}
 								<i class="fa-rotate-left fa-solid replay icon"></i>
 							{:else}
 								<i class="fa-play fa-solid play icon"></i>
@@ -114,10 +116,10 @@
 					class="audio"
 					src={"./uploads/audio/" + $musicList[currentSong].audio}
 					bind:this={audioElement}
-					bind:paused={playerState}
+					bind:paused={paused}
 					bind:currentTime={currentTime}
 					bind:duration={duration}
-					autoplay="false"
+					autoplay="true"
 				>
 				</audio>
 				{#if menu == "queue"}
